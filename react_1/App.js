@@ -1,6 +1,8 @@
+// src/App.js
+
 import React from "react";
-import "./styles.css";
-import Card from "./Components/Card"; // Asegúrate de que la ruta sea correcta
+import "./styles.css"; // Asegúrate de que el archivo styles.css esté en la misma carpeta
+import Card from "./Components/Card"; // Importamos el componente Card
 
 export default function App() {
   return (
@@ -11,3 +13,4 @@ export default function App() {
     </div>
   );
 }
+
