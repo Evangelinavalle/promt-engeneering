@@ -1,38 +1,24 @@
-// import "./index.css";
+import "./index.css";
 import Card from "./Components/Card";
 
-// import "./Components/Card."
+import { useState} from "react";
+
 export default function App() {
 
-  return (
+let [upvote, setupvote] = useState(0);
 
-    <div className="App">
-    
-    <Card
-    
-    Name="Evan"
-    
-    Work="SWE"
-    />
-    
-    {/* <Card
-    
-    Name="Korina"
-    
-    Work="Chef"
-    
-    />
-    
-    <Card
-    
-    Name="Sam"
-    
-    Work="President"
-    />    
- */}
-</div>
-
-) ; 
-
+function like () {
+return setupvote((upvote += 1));
 }
 
+
+  return (
+    <div className="App">
+      {upvote}
+      <button>🐤</button>
+      <Card Name="Evan" Work="SWE" />
+      <Card Name="Korina" Work="Chef" pics/> 
+      <Card Name="Sam" Work="Hunter" />
+    </div>
+  );
+}
