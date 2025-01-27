@@ -1,0 +1,18 @@
+.col {
+ border: solid black 2px;
+
+}
+
+.row {
+ background-color: aqua;
+ border: solid black 2px;
+
+}
+
+body {
+ color: azure;
+}
+
+.container  {
+ height: 60vh;
+}
