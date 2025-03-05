@@ -1,21 +1,29 @@
-/// Import the functions you need from the SDKs you need
-import {initializeApp } from "firebase/app";
-import {getAuth } from "firebase/auth";
-import {getFirestore } from "firebase/firestore";
-//TODO:Add SDKs for Firebase products that you want to use
-//https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-apiKey: "AIzaSyAa2reQzZ1rllxfHz-2MCRv61BhckfedFI" ,
-authDomain: "dae-demo.firebaseapp.com"
-projectId: "dae-demo", storageBucket:
-"dae-demo.appspot.com"
-messagingSenderId: "533346838697",
-appId: "1:533346838697: web: 7bae564b46ae88c04421b8",
-｝；
-// Initialize Firebase
-const app = initializeApp (firebaseConfig) ;
-export const authgetAuth (app) ;
-export const db = getFirestore(app);
+// const firebaseConfig = {
+//   apiKey: "AIzaSyB0L1K0gjTwyvWqYYrKqVuaxb6l-UCY-Q4",
+//   authDomain: "sample-firebase-ai-app-d9d7a.firebaseapp.com",
+//   projectId: "sample-firebase-ai-app-d9d7a",
+//   storageBucket: "sample-firebase-ai-app-d9d7a.firebasestorage.app",
+//   messagingSenderId: "88722686466",
+//   appId: "1:88722686466:web:2f011d6160350000971d1b"
+// };
 
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCPdL-7J4YjkO86yEkWnnfwaJNBudibAeE",
+    authDomain: "login-1d6fc.firebaseapp.com",
+    projectId: "login-1d6fc",
+    storageBucket: "login-1d6fc.firebasestorage.app",
+    messagingSenderId: "905691138865",
+    appId: "1:905691138865:web:1c242cf02ba48c804f7e10"
+  };
+  const app = initializeApp(firebaseConfig);
