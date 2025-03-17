@@ -20,16 +20,17 @@
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
         const firebaseConfig = {
-          apiKey: "AIzaSyCPdL-7J4YjkO86yEkWnnfwaJNBudibAeE",
-          authDomain: "login-1d6fc.firebaseapp.com",
-          projectId: "login-1d6fc",
-          storageBucket: "login-1d6fc.appspot.com",
-          messagingSenderId: "905691138865",
-          appId: "1:905691138865:web:1c242cf02ba48c804f7e10"
+          apiKey: "AIzaSyBmQbUU0eoowZr3APnbFOW78ypdY7aEeLk",
+          authDomain: "evangelina-554fb.firebaseapp.com",
+          projectId: "evangelina-554fb",
+          storageBucket: "evangelina-554fb.firebasestorage.app",
+          messagingSenderId: "382415367667",
+          appId: "1:382415367667:web:c2a1af21447f80a1f57686"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
+        // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
         window.login = function() {
             const email = document.getElementById('login-email').value;
