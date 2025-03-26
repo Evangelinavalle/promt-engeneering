@@ -1,27 +1,80 @@
-<! DOCTYPE html>
-<htm]>
-<head>
-‹title>Form Elements</title>
-</head>
-<body>
-<! -- Form Tag
-Example
--->
-‹form
-action="/submit-form"> <! -- Text Input Type --> <label for="name">Name:</label>
-<input
-type="text" id="name"
-name="name"><br><br>
-<! -- Textarea Input Type -->
-<label for="comment">Comment: </label>
-«textarea id="comment" name="comment"></textarea><br><br>
-<! -- Checkbox Input Type -->
-<label for="subscribe">Subscribe to newsletter</label>
-<input
-type="checkbox" id="subscribe"
-name="subscribe"><br><br>
-<! -- Submit Input Type -->
-<input type="submit" value="Submit">
-</form>
-</body>
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simple HTML Page</title>
+    </head>
+    <body>
+        <!-- Section Tag Example -->
+        <section>
+            <h1>Welcome to My Website</h1>
+            <p>This is a section of content that groups related topics.</p>
+            <blockquote>
+                <p>"The only limit to our realization of tomorrow is our doubts of today."</p>
+                <cite>- Franklin D. Roosevelt</cite>
+            </blockquote>
+            <pre><code>
+                
+            </code></pre>
+        </section>
+        <!-- End of Section Tag Example -->
+        
+        <!-- Form Example -->
+        <form action="submit_form.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="feedback" rows="4" cols="30" placeholder="Write your feedback here..."></textarea>
+            
+            <label>
+                <input type="checkbox" name="subscribe" value="newsletter"> Subscribe to newsletter
+            </label>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <!-- End of Form Example -->
+        
+        <!-- Table Example -->
+        <table border="1">
+            <tr>
+                <th rowspan="2">Item</th>
+                <th colspan="2">Details</th>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td>Notebook</td>
+                <td>$5</td>
+                <td>10</td>
+            </tr>
+        </table>
+        <!-- End of Table Example -->
+        
+        <!-- Links Example -->
+        <nav>
+            <ul>
+                <li><a href="https://www.example.com" target="_blank">External Link</a></li>
+                <li><a href="about.html">Relative Link</a></li>
+            </ul>
+        </nav>
+        <!-- End of Links Example -->
+        
+        <!-- Multimedia Example -->
+        <video controls width="400">
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+        <!-- End of Multimedia Example -->
+    </body>
 </html>
+
+

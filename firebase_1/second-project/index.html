@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Anime Character Vault</title>
+    <!-- Firebase v9.23.0 (compat) for old-style initializeApp usage -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  </head>
+  <body>
+    <h1>Anime Character Vault 👘</h1>
+
+    <h2>Add an Anime Character (With Image URL)</h2>
+    <form id="animeForm">
+      <input type="text" id="name" placeholder="Character Name" required><br><br>
+      <textarea id="description" placeholder="Description" required></textarea><br><br>
+      <input type="text" id="imageUrl" placeholder="Image URL (e.g. https://...)" required><br><br>
+      <button type="submit">Add Character</button>
+    </form>
+
+    <p id="statusMessage"></p>
+
+    <h2>All Characters</h2>
+    <ul id="charactersList"></ul>
+
+    <script>
+      // 1. Your Firebase project configuration (same as before)
+      const firebaseConfig = {
+        apiKey: "AIzaSyDVgxRYF7D5qkLWHh_BbDgUsAN8ORK7By4",
+        authDomain: "minifirebaseapp-d12e8.firebaseapp.com",
+        projectId: "minifirebaseapp-d12e8",
+        // storageBucket: "minifirebaseapp-d12e8.appspot.com", // not needed now
+        messagingSenderId: "455638623070",
+        appId: "1:455638623070:web:e904ff57ec6d25e0cde5cf"
+      };
+
+      // 2. Initialize Firebase (compat style)
+      firebase.initializeApp(firebaseConfig);
+
+      // 3. Initialize Firestore
+      const db = firebase.firestore();
+
+      // 4. Handle Form Submission (CREATE)
+      const animeForm = document.getElementById('animeForm');
+      const statusMessage = document.getElementById('statusMessage');
+
+      animeForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusMessage.innerText = "Adding...";
+
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const imageUrl = document.getElementById('imageUrl').value;
+
+        try {
+          // Add the character to Firestore with name, description, and image URL
+          await db.collection('animeCharacters').add({
+            name: name,
+            description: description,
+            imageUrl: imageUrl,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+
+          statusMessage.innerText = "Character added successfully!";
+          animeForm.reset();
+        } catch (error) {
+          console.error("Error adding character:", error);
+          statusMessage.innerText = "Error: " + error.message;
+        }
+      });
+
+      // 5. Real-Time Listener (READ)
+      const charactersList = document.getElementById('charactersList');
+
+      db.collection('animeCharacters')
+        .orderBy('createdAt', 'desc')
+        .onSnapshot((snapshot) => {
+          // Clear the current list
+          charactersList.innerHTML = "";
+
+          snapshot.forEach((doc) => {
+            const data = doc.data();
+
+            // Create a list item to display name, description, and the image
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <strong>${data.name}</strong> - ${data.description}
+              <br>
+              <img src="${data.imageUrl}" alt="Anime Image" style="max-width: 200px; margin-top: 5px;">
+              <br>
+              <button onclick="editCharacter('${doc.id}', '${data.name}', '${data.description}', '${data.imageUrl}')">Edit</button>
+              <button onclick="deleteCharacter('${doc.id}')">Delete</button>
+              <hr>
+            `;
+            charactersList.appendChild(li);
+          });
+        });
+
+      // 6. Update a Character (UPDATE)
+      //    We'll also prompt for the new image URL
+      window.editCharacter = async (id, currentName, currentDescription, currentImageUrl) => {
+        const newName = prompt("Enter new name:", currentName);
+        if (newName === null) return; // user canceled
+
+        const newDescription = prompt("Enter new description:", currentDescription);
+        if (newDescription === null) return; // user canceled
+
+        const newImageUrl = prompt("Enter new image URL:", currentImageUrl);
+        if (newImageUrl === null) return; // user canceled
+
+        try {
+          await db.collection('animeCharacters').doc(id).update({
+            name: newName,
+            description: newDescription,
+            imageUrl: newImageUrl
+          });
+          statusMessage.innerText = "Character updated!";
+        } catch (error) {
+          console.error("Error updating character:", error);
+          statusMessage.innerText = "Error: " + error.message;
+        }
+      };
+
+      // 7. Delete a Character (DELETE)
+      window.deleteCharacter = async (id) => {
+        try {
+          await db.collection('animeCharacters').doc(id).delete();
+          statusMessage.innerText = "Character deleted!";
+        } catch (error) {
+          console.error("Error deleting character:", error);
+          statusMessage.innerText = "Error: " + error.message;
+        }
+      };
+    </script>
+  </body>
+</html>
