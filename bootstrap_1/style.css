@@ -4,13 +4,13 @@
 }
 
 .row {
- background-color: aqua;
+ background-color: rgb(169, 138, 214);
  border: solid black 2px;
 
 }
 
 body {
- color: azure;
+ color: rgb(152, 120, 157);
 }
 
 .container  {
